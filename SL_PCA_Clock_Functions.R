@@ -190,20 +190,6 @@ predict_all_clocks <- function(cpg_coefs, pca_model, pca_sl_model, meth, family_
   colnames(preds) <- c("CpG_Clock", "PCA_Clock", "PCA_SL_Clock")
   preds <- as.data.frame(preds)
   
-  
-  if(age_transform == "Custom") {
-    preds <- preds %>% 
-      dplyr::mutate(cpg_f = ifelse(CpG_Clock <= 5, (exp(CpG_Clock + (log(6))))-1, 
-                                  (6*CpG_Clock) + 5), 
-                   pca_f = ifelse(PCA_Clock <= 5, (exp(PCA_Clock + (log(6))))-1, 
-                                  (6*PCA_Clock) + 5), 
-                   sl_f = ifelse(PCA_SL_Clock <= 5, (exp(PCA_SL_Clock + (log(6))))-1, 
-                                  (6*PCA_SL_Clock) + 5)) %>% 
-      dplyr::select(cpg_f, pca_f, sl_f)
-    
-    colnames(preds) <- c("CpG_Clock", "PCA_Clock", "PCA_SL_Clock")
-  }
-  
   return(preds)
 }
 
