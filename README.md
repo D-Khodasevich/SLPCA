@@ -36,9 +36,8 @@ epigenetic clocks using three methodologies:
 -   3)  SL PCA Clock: SuperLearner ensemble predictor based on the PC
         matrix
 
-<img src="../SLPCA_Guide.jpg" width="3078" />
 
-User guide for using the SuperLearner PCA pipeline to generate
+This user guide for using the SuperLearner PCA pipeline to generate
 DNAm-based predictors and generate predictions on new datasets.
 
 -   Step 1 involves training a new clock.  
@@ -67,7 +66,7 @@ library(arm)
 library(pROC)
 ```
 
-Load SL PCA Functions from GitHub. (Update with github link)
+Load SL PCA Functions from GitHub. 
 
 ``` r
 source("C:/Users/Dennis/Desktop/SL_PCA_Clock_Functions.R") 
@@ -216,7 +215,7 @@ head(all_predictions) # dataset containing predictions from all 3 clocks for all
 ### if it was not matched, can alternatively join by rownames
 dat <- cbind(datPhenoTrain, all_predictions)
 
-#save(dat, file = "Predictions_Training.RData") # save prediction phenotype file
+#save(dat, file = "Predictions_Training.RData") # save prediction phenotype file for future use
 ```
 
 # Step 3) Clock Fit Summaries
@@ -230,8 +229,6 @@ library(tidyverse)
 library(Metrics)
 library(gridExtra)
 
-load("Predictions_Training.RData") # predictions from earlier
-
 a <- comp_plot(dat$Age, dat$CpG_Clock, x_lab="Age", y_lab="CpG Clock")
 b <- comp_plot(dat$Age, dat$PCA_Clock, x_lab="Age", y_lab="PCA Clock")
 c <- comp_plot(dat$Age, dat$PCA_SL_Clock, x_lab="Age", y_lab="SL PCA Clock")
@@ -239,4 +236,3 @@ c <- comp_plot(dat$Age, dat$PCA_SL_Clock, x_lab="Age", y_lab="SL PCA Clock")
 grid.arrange(a,b,c, nrow=1)
 ```
 
-![](00_SLPCA_Predictor_Guide_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
