@@ -418,9 +418,8 @@ SL.glmnet100 <- function (Y, X, newX, family, obsWeights, id, alpha = 1, nfolds 
 
 comp_plot <- function(X, Y, x_lab, y_lab) {
   
-  corr = round(cor(X, Y), digits=4)
-#  maeval = round(mae(X, Y), digits=4) # can set option of calculating mean or median
-  maeval = round(mdae(X, Y), digits=4)
+  corr = round_fix(cor(X, Y), digits=3)
+  maeval = round_fix(mdae(X, Y), digits=3)
   
   tempdat <- as.data.frame(cbind(X, Y))
   colnames(tempdat) <- c("X", "Y")
@@ -468,4 +467,12 @@ auc_plots <- function(cpg, pca, sl) {
                            "PCA: ", pca_auc, "\n",  
                            "SL PCA: ", sl_auc))
   return(pl)
+}
+
+# round_fix, round while keeping trailing 0's
+### based on function from finalfit R package
+round_fix = function(x, digits){
+  sprintf.arg = paste0("%.", digits, "f")
+  x.rounded = do.call(sprintf, list(sprintf.arg, x)) 
+  return(x.rounded)
 }
