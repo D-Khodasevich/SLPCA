@@ -28,12 +28,12 @@ a weighted combination of the individual candidate algorithms.
   Here, we present an efficient methodology for simultaneously training
 epigenetic clocks using three methodologies:
 
--   1)  CpG Clock: based on elastic net regression of the CpG matrix  
+-   CpG Clock: based on elastic net regression of the CpG matrix  
 
--   2)  PCA Clock: Principal component analysis followed by elastic net
+-   PCA Clock: Principal component analysis followed by elastic net
         regression of the PC matrix  
 
--   3)  SL PCA Clock: SuperLearner ensemble predictor based on the PC
+-   SL PCA Clock: SuperLearner ensemble predictor based on the PC
         matrix
 
 
@@ -236,3 +236,4 @@ c <- comp_plot(dat$Age, dat$PCA_SL_Clock, x_lab="Age", y_lab="SL PCA Clock")
 grid.arrange(a,b,c, nrow=1)
 ```
 
+![](00_SLPCA_Predictor_Guide_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
