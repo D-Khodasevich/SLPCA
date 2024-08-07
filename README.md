@@ -12,7 +12,7 @@ and array type differences. This limited reliability of individual CpG
 sites can become a key issue in epigenetic clocks and other DNA
 methylation-derived predictors which often use only a small subset of
 CpG sites, usually ranging from a few dozen to a few hundred, to predict
-a trait. Recently, Higgens-Chen et al proposed training epigenetic
+a trait. Recently, Higgins-Chen et al proposed training epigenetic
 clocks on the principal components generated from CpG-level data to
 overcome the limitations of relying on individual CpG sites. The PCA
 clocks were found to improve agreement between replicate samples,
